@@ -1,6 +1,4 @@
 # Lesson 1: My First Exercise
-```markdown
-# Lesson 1: My First Exercise
 
 ## 1. The Task
 Follow the layout in this image:
@@ -13,7 +11,7 @@ Follow the layout in this image:
 ## 3. The Solution Code
 Copy and study the code below:
 
-```javascript
+```html
 <!DOCTYPE html>
 <html>
   <body>
@@ -21,8 +19,3 @@ Copy and study the code below:
     <p>This is the solution for Exercise 1.</p>
   </body>
 </html>
-
-```python
-# This is where your code will look beautiful with colors
-def hello_world():
-    print("Hello students!")
