@@ -1,15 +1,7 @@
-# Lesson 1: My First Exercise
+# Exercise 1
 
 ## 1. The Task
-Follow the layout in this image:
-
-![Task Image](task.png)
-
-## 2. Live Demo
-[Click here to see the working website](https://Minwook07.github.io/my-coding-class/Exercise-01/)
-
-## 3. The Solution Code
-Copy and study the code below:
+![Task Image](images/task.png)
 
 ```html
 <!DOCTYPE html>
