@@ -6,8 +6,14 @@
 Here is the image you need to follow:
 ![Exercise Image](./Exercise-01/task.png)
 
-### The Solution Code
+### Example Solution:
 ```html
-# This is where your code will look beautiful with colors
-def hello_world():
-    print("Hello students!")
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercise 1</title>
+</head>
+<body>
+    <h1>Hello Students!</h1>
+</body>
+</html>
