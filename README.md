@@ -8,7 +8,6 @@ Follow the layout in this image:
 [Click here to see the working website](https://Minwook07.github.io/my-coding-class/Exercise-01/)
 
 ### 3. The Solution Code
-Copy and study the code below:
 
 ```html
 <!DOCTYPE html>
