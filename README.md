@@ -13,7 +13,7 @@ Follow the layout in this image:
 ## 3. The Solution Code
 Copy and study the code below:
 
-```html
+```javascript
 <!DOCTYPE html>
 <html>
   <body>
@@ -21,3 +21,6 @@ Copy and study the code below:
     <p>This is the solution for Exercise 1.</p>
   </body>
 </html>
+
+```python
+js
