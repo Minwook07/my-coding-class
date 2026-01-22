@@ -23,4 +23,6 @@ Copy and study the code below:
 </html>
 
 ```python
-js
+# This is where your code will look beautiful with colors
+def hello_world():
+    print("Hello students!")
