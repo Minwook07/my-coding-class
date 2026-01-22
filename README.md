@@ -19,3 +19,4 @@ Copy and study the code below:
     <p>This is the solution for Exercise 1.</p>
   </body>
 </html>
+```
