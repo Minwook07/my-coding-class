@@ -1,6 +1,5 @@
 # Homework 
-![Task Image](homework.png)
-<img src="Add.png" width="600" style="border-radius: 10px; border: 1px solid red;">
+<img src="homework.png" width="600" style="border-radius: 10px; border: 1px solid red;">
 ```html
 <!DOCTYPE html>
 <html lang="en">
