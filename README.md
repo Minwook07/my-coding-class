@@ -1,7 +1,7 @@
 # Exercise 1
 
 ## 1. The Task
-![Task Image](images/task.png)
+![Task Image](Add.png)
 
 ```html
 <!DOCTYPE html>
