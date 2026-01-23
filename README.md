@@ -1,5 +1,7 @@
 # Homework 
 <img src="homework.png" width="600" style="border-radius: 10px; border: 1px solid red;">
+
+# Homework - HTML Code
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +59,98 @@
 </html>
 ```
 
-# Classwork 1
+
+# Classwork 1 - JavaScript Code
+
+```javascript
+let errorTag = document.querySelectorAll(".text-danger");
+const addStudent = () => {
+    event.preventDefault();
+    //1. get value from form 
+    let enName = document.querySelector("#enName").value.trim();
+    let khName = document.querySelector("#khName").value.trim();
+    let email = document.querySelector("#email").value.trim();
+    let phone = document.querySelector("#phone").value.trim();
+    let gender = document.querySelector("input[name='gender']:checked"); // tell javascript to look up tag <input> that have attribute name="gender"
+    let subjects = document.querySelectorAll(".subject:checked");
+    //2 remove message error
+    errorTag.forEach(err => {
+        err.innerText = ""
+
+    });
+    //3. check validation
+    let isvalid = true;
+    // 4. check all input
+    if (enName === "") {
+        isvalid = false;
+        document.getElementById("enNameError").innerText = "Select English name"
+    }
+    if (khName === "") {
+        isvalid = false;
+        document.getElementById("khNameError").innerText = "Select Khmer name"
+    }
+    if (email === "") {
+        isvalid = false
+        document.getElementById("emailError").innerText = "Select Email name"
+    }
+    if (phone === "") {
+        isvalid = false
+        document.getElementById("phoneError").innerText = "Select phone name"
+    }
+    if (!gender) {
+        isvalid = false
+        document.getElementById("genderError").innerText = "Select gender"
+
+    }
+    if (subjects.length == 0) {
+        isvalid = false
+        document.getElementById("subjectError").innerText = "Select subject at lest one subject"
+
+    }
+    //5. check if isvalid false it will return (stop code)
+    if (!isvalid) {
+        return;
+    }
+
+    // 6. isvalid = true
+    let subjectSelect = "";
+    subjects.forEach((sub, index) => {
+        if (index == 0) {
+            subjectSelect = sub.value;
+        } else if (index === subjects.length - 1) {
+            subjectSelect += ` and ${sub.value}`;
+        } else {
+            subjectSelect += `, ${sub.value}`
+        }
+
+    });
+    // 7. open card result
+    document.querySelector("#resultCard").classList.remove("d-none")
+    // 8. hide form 
+    document.querySelector("#formCard").classList.add("d-none")
+    // 9. display each result to card
+    document.getElementById("result").innerHTML =
+        `
+    <p>English Name: ${enName}</p>
+    <p>Khmer Name: ${khName}</p>
+    <p>Gender: ${gender.value}</p>
+    <p>Email: ${email}</p>
+    <p>Phone: ${phone}</p>
+    <p>Subject: ${subjectSelect}</p>
+    `
+}
+// 10 reset form (clear message and clear value in each input)
+function resetForm() {
+    event.preventDefault();
+    document.querySelector("#studentForm").reset();
+    errorTag.forEach(err => {
+        err.innerText = ""
+
+    });
+}
+````
+
+# Classwork 1 - HTML Code
 
 ```html
 <!DOCTYPE html>
