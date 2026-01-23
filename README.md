@@ -2,6 +2,7 @@
 
 ## 1. The Task
 ![Task Image](Add.png)
+<img src="Add.png" width="600" style="border-radius: 10px; border: 1px solid red;">
 
 ```html
 <!DOCTYPE html>
