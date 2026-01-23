@@ -1,15 +1,108 @@
-# Exercise 1
-
-## 1. The Task
-![Task Image](Add.png)
-<img src="Add.png" width="600" style="border-radius: 10px; border: 1px solid red;">
+# Classwork 1
 
 ```html
 <!DOCTYPE html>
-<html>
-  <body>
-    <h1>Hello Students!</h1>
-    <p>This is the solution for Exercise 1.</p>
-  </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+        <!-- FORM CARD -->
+        <div class="row justify-content-center" id="formCard">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h4>Student Registration</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <form id="studentForm">
+
+                            <!-- English Name -->
+                            <div class="mb-3">
+                                <label class="form-label">English Name</label>
+                                <input type="text" id="enName" class="form-control">
+                                <small class="text-danger" id="enNameError"></small>
+                            </div>
+
+                            <!-- Khmer Name -->
+                            <div class="mb-3">
+                                <label class="form-label">Khmer Name</label>
+                                <input type="text" id="khName" class="form-control">
+                                <small class="text-danger" id="khNameError"></small>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="mb-3">
+                                <label class="form-label">Gender</label><br>
+                                <input type="radio" name="gender" value="Male"> Male
+                                <input type="radio" name="gender" value="Female"> Female <br>
+                                <small class="text-danger" id="genderError"></small>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control">
+                                <small class="text-danger" id="emailError"></small>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="text" id="phone" class="form-control">
+                                <small class="text-danger" id="phoneError"></small>
+                            </div>
+
+                            <!-- Subjects -->
+                            <div class="mb-3">
+                                <label class="form-label">Subjects</label><br>
+                                <input type="checkbox" class="subject" value="JavaScript"> JavaScript <br>
+                                <input type="checkbox" class="subject" value="PHP"> PHP <br>
+                                <input type="checkbox" class="subject" value="Java"> Java <br>
+                                <input type="checkbox" class="subject" value="C#"> C# <br>
+                                <small class="text-danger" id="subjectError"></small>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success" onclick="addStudent()">Submit</button>
+                                <button type="submit" class="btn btn-primary" onclick="resetForm()">Reset</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULT CARD -->
+        <div class="row justify-content-center d-none" id="resultCard">
+            <div class="col-md-8">
+                <div class="card shadow">
+                    <div class="card-header bg-success text-white text-center">
+                        <h4>Student Information</h4>
+                    </div>
+                    <div class="card-body" id="result">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="classwork1.js">
+
+    </script>
+
+</body>
+
 </html>
 ```
