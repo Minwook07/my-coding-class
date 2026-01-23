@@ -1,3 +1,61 @@
+# Homework 
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h3 class="mb-3">User List</h3>
+
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                <!-- Data will be inserted here -->
+                <!-- <tr>
+          <td>1</td>
+          <td>Mey</td>
+          <td>Mora</td>
+          <td>Female</td>
+          <td>
+            <span class="badge bg-success">
+              Active
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Sok</td>
+          <td>San</td>
+          <td>Male</td>
+          <td>
+            <span class="badge bg-secondary">
+              Disabled
+            </span>
+          </td>
+        </tr> -->
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
+```
+
 # Classwork 1
 
 ```html
