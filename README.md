@@ -1,3 +1,203 @@
+# Practice
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Exercise</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Add Student</h4>
+                    </div>
+                    <!-- form Create Student -->
+                    <div class="card-body">
+                        <form id="studentForm">
+
+                            <!-- First Name -->
+                            <div class="mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName">
+                                <div class="invalid-feedback">
+                                    First name is required
+                                </div>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName">
+                                <div class="invalid-feedback">
+                                    Last name is required
+                                </div>
+                            </div>
+
+                            <!-- Age -->
+                            <div class="mb-3">
+                                <label class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age">
+                                <div class="invalid-feedback">
+                                    Age must be greater than 0
+                                </div>
+                            </div>
+                            <!-- Gender -->
+                            <div class="mb-3">
+                                <label class="form-label">Gender</label>
+                                <select class="form-select" id="gender">
+                                    <option value="">Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Gender is required
+                                </div>
+                            </div>
+
+                            <!-- Photo -->
+                            <div class="mb-3">
+                                <label class="form-label">Photo Path</label>
+                                <input type="text" class="form-control" id="photo" placeholder="img/male.png"
+                                    value="img/">
+                                <div class="invalid-feedback">
+                                    Photo is required
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">
+                                Save Student
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Sisplay Card Student-->
+
+        <h1 class="text-center mt-4">List of Student</h1>
+        <div class="row my-5" id="studentList">
+            <!-- example -->
+        </div>
+    </div>
+</body>
+<!-- <script src="script.js"></script> -->
+<script>
+    const students = [
+        { firstName: "John", lastName: "Doe", age: 20, gender: "male", photo: "img/male.png" },
+        { firstName: "Sokha", lastName: "Chan", age: 22, gender: "female", photo: "img/female.png" },
+        { firstName: "Dara", lastName: "Kim", age: 19, gender: "male", photo: "img/male.png" },
+        { firstName: "Mara", lastName: "Mey", age: 19, gender: "female", photo: "img/female.png" },
+        { firstName: "Bona", lastName: "Sokhom", age: 23, gender: "male", photo: "img/male.png" }
+    ]
+
+    let studentBtn = document.getElementById('studentForm');
+    let studentShow = document.getElementById('studentList');
+
+    let firstNameValid = document.getElementById('firstName');
+    let lastNameValid = document.getElementById('lastName');
+    let ageValid = document.getElementById('age');
+    let genderValid = document.getElementById('gender');
+    let photoValid = document.getElementById('photo');
+
+    function renderList() {
+        studentShow.innerHTML = ""
+        students.forEach(item => {
+            studentShow.innerHTML +=
+                `
+            <div class="col-md-4 mb-4">
+                <div class="card shadow ${item.gender.toLowerCase() === "female" ? "border-female" : "border-male"}">
+                <div class="card-body text-center">
+                    <img src="${item.photo}" class="img-fluid rounded-circle mb-3 w-50">
+                    <h5>${item.firstName} ${item.lastName}</h5>
+                    <p class="mb-1">Age: ${item.age}</p>
+                    <p class="mb-0">Gender: ${item.gender}</p>
+                </div>
+                </div>
+            </div>
+        `
+        })
+    }
+
+    renderList();
+    studentBtn.addEventListener("submit", function (e) {
+        e.preventDefault();
+        let isValid = true;
+
+
+        let firstNameInput = firstNameValid.value.trim();
+        let lastNameInput = lastNameValid.value.trim();
+        let ageInput = ageValid.value.trim();
+        let genderInput = genderValid.value.trim();
+        let photoInput = photoValid.value.trim();
+
+        if (firstNameInput === "") {
+            firstNameValid.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            firstNameValid.classList.remove('is-invalid');
+        }
+
+        if (lastNameInput === "") {
+            isValid = false;
+
+            lastNameValid.classList.add('is-invalid');
+        } else {
+            lastNameValid.classList.remove('is-invalid');
+        }
+
+        if (ageInput === "" | ageInput <= 0) {
+            isValid = false;
+
+            ageValid.classList.add('is-invalid');
+        } else {
+            ageValid.classList.remove('is-invalid');
+        }
+
+        if (genderInput === "") {
+            isValid = false;
+
+            genderValid.classList.add('is-invalid');
+        } else {
+            genderValid.classList.remove('is-invalid');
+        }
+
+        if (photoInput === "" | photoInput === "img/") {
+            isValid = false;
+            photoValid.classList.add('is-invalid');
+        } else {
+            photoValid.classList.remove('is-invalid');
+        }
+
+        if (isValid) {
+            let studentNews = {
+                firstName: firstNameInput,
+                lastName: lastNameInput,
+                age: ageInput,
+                gender: genderInput,
+                photo: photoInput
+            }
+            students.push(studentNews);
+            renderList();
+            studentBtn.reset();
+        }
+    })
+
+
+
+</script>
+
+</html>
+```
+
 # Homework 
 <img src="homework.png" width="600" style="border-radius: 10px; border: 1px solid red;">
 
