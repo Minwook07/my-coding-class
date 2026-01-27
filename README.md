@@ -7,7 +7,14 @@
     <meta charset="UTF-8">
     <title>DOM Exercise</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .border-male {
+            border-left: 6px solid blue;
+        }
+        .border-female {
+            border-left: 6px solid orange;
+        }
+    </style>
 </head>
 
 <body>
@@ -81,7 +88,7 @@
 
             </div>
         </div>
-        <!-- Sisplay Card Student-->
+        <!-- Display Card Student-->
 
         <h1 class="text-center mt-4">List of Student</h1>
         <div class="row my-5" id="studentList">
@@ -89,7 +96,6 @@
         </div>
     </div>
 </body>
-<!-- <script src="script.js"></script> -->
 <script>
     const students = [
         { firstName: "John", lastName: "Doe", age: 20, gender: "male", photo: "img/male.png" },
@@ -131,7 +137,6 @@
     studentBtn.addEventListener("submit", function (e) {
         e.preventDefault();
         let isValid = true;
-
 
         let firstNameInput = firstNameValid.value.trim();
         let lastNameInput = lastNameValid.value.trim();
@@ -190,9 +195,6 @@
             studentBtn.reset();
         }
     })
-
-
-
 </script>
 
 </html>
