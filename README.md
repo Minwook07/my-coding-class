@@ -1,3 +1,81 @@
+# Practice with Event
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Content:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Content", system-ui;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="card p-4 shadow border-0">
+                    <div id="successAlert" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+                        <strong>ជោគជ័យ!</strong> ការចុះឈ្មោះរបស់អ្នកបានសម្រេច!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <h2 class="mb-4 text-center h4">ចុះឈ្មោះចូលរៀន</h2>
+                    <form onsubmit="registrationForm(event)">
+                        <div class="mb-3">
+                            <label class="form-label">ឈ្មោះអ្នកប្រើ</label>
+                            <input type="text" id="username" class="form-control shadow-none"
+                                placeholder="បញ្ចូលឈ្មោះ...">
+                            <div class="valid-feedback">
+                                ឈ្មោះប្រើប្រាស់បាន!
+                            </div>
+                            <div class="invalid-feedback">
+                                សូមបញ្ចូលឈ្មោះរបស់អ្នកយ៉ាងតិច៦តួអក្សរ
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">ជ្រើសរើសវគ្គសិក្សា</label>
+                            <select id="courseSelect" class="form-select shadow-none">
+                                <option value="0">--- ជ្រើសរើសវគ្គសិក្សា ---</option>
+                                <option value="50">JavaScript ($50)</option>
+                                <option value="80">PHP Laravel ($80)</option>
+                                <option value="100">UX/UI Design ($100)</option>
+                            </select>
+                            <div class="valid-feedback" id="validSuccess"></div>
+                            <div class="invalid-feedback">
+                                សូមជ្រើសរើសវគ្គសិក្សាសិន
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100">ចុះឈ្មោះឥឡូវនេះ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+```
+
 # Practice
 ```html
 <!DOCTYPE html>
