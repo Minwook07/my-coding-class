@@ -76,6 +76,11 @@
 </html>
 ```
 
+# Lesson "Event" with Example
+```html
+# I will update later
+```
+
 # Practice
 ```html
 <!DOCTYPE html>
