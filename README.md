@@ -1,4 +1,74 @@
 # Practice with Event
+## JavaScript
+```javascript
+    <script>
+        let username = document.getElementById('username');
+        let course = document.getElementById('courseSelect');
+        let showCourse = document.getElementById('validSuccess');
+        let showSuccess = document.getElementById('successAlert');
+
+        function usrName() {
+            username.classList.add('text-warning');
+        }
+
+        function usrNameOut() {
+            username.classList.remove('text-warning');
+        }
+
+        function usrNameInput() {
+            if (username.value.trim() !== "" && username.value.length >= 6) {
+                username.classList.add('is-valid');
+                username.classList.remove('is-invalid');
+            } else {
+                username.classList.add('is-invalid');
+                username.classList.remove('is-valid');
+            }
+        }
+
+        function selectCourse() {
+            if (course.value === "0") {
+                course.classList.add('is-invalid');
+                course.classList.remove('is-valid');
+            } else {
+                course.classList.add('is-valid');
+                course.classList.remove('is-invalid');
+                showCourse.innerHTML = course.value;
+            }
+
+        }
+
+        function registrationForm(e) {
+            e.preventDefault();
+
+            let isValid = true;
+
+            if (username.value.trim() !== "" && username.value.length >= 6) {
+                username.classList.add('is-valid');
+                username.classList.remove('is-invalid');
+            } else {
+                username.classList.add('is-invalid');
+                username.classList.remove('is-valid');
+                isValid = false;
+            }
+
+            if (course.value === "0") {
+                course.classList.add('is-invalid');
+                course.classList.remove('is-valid');
+                isValid = false;
+            } else {
+                course.classList.add('is-valid');
+                course.classList.remove('is-invalid');
+                showCourse.innerHTML = course.value;
+            }
+
+            if (isValid) {
+                showSuccess.classList.remove('d-none');
+            }
+        }
+    </script>
+```
+
+## HTML
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -41,8 +111,8 @@
                     <form onsubmit="registrationForm(event)">
                         <div class="mb-3">
                             <label class="form-label">ឈ្មោះអ្នកប្រើ</label>
-                            <input type="text" id="username" class="form-control shadow-none"
-                                placeholder="បញ្ចូលឈ្មោះ...">
+                            <input type="text" id="username" onfocus="usrName()" onblur="usrNameOut()"
+                                onkeyup="usrNameInput()" class="form-control shadow-none" placeholder="បញ្ចូលឈ្មោះ...">
                             <div class="valid-feedback">
                                 ឈ្មោះប្រើប្រាស់បាន!
                             </div>
@@ -53,7 +123,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">ជ្រើសរើសវគ្គសិក្សា</label>
-                            <select id="courseSelect" class="form-select shadow-none">
+                            <select id="courseSelect" onchange="selectCourse()" class="form-select shadow-none">
                                 <option value="0">--- ជ្រើសរើសវគ្គសិក្សា ---</option>
                                 <option value="50">JavaScript ($50)</option>
                                 <option value="80">PHP Laravel ($80)</option>
