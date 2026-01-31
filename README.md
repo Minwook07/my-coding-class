@@ -1,3 +1,145 @@
+# Practice with Event "onkeydown && onkeyup"
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Keyboard Event Practice</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: "Kantumruy Pro", sans-serif;
+            padding-top: 50px;
+        }
+
+        .card {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .display-counter {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0d6efd;
+            background: #e7f1ff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            <h2 class="text-center">ការអនុវត្ត Keyboard Event</h2>
+
+            <div class="col-md-5">
+                <div class="card p-4 h-100 text-center border-top border-primary border-5">
+                    <div class="d-flex justify-content-center align-items-center mb-5">
+                        <img src="img/typing-board.png" class="w-50" alt="">
+                    </div>
+                    <input type="text" class="form-control shadow-none mb-3" id="input1"
+                        placeholder="សូមសាកល្បងវាយអក្សរ..." onkeydown="handleCount1()" onfocus="handleStyle()"
+                        onblur="handleStyle2()">
+                    <div class="display-counter" id="display1">ចំនួនចុច: 0</div>
+                    <p class="small text-danger mt-3">ចំណាំ: ពេលចុច key ជាប់ វានឹងបន្ត count រហូត</p>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="card p-4 h-100 text-center border-top border-success border-5">
+                    <div class="d-flex justify-content-center align-items-center mb-5">
+                        <img src="img/laptop.png" class="w-50" alt="">
+                    </div>
+                    <input type="text" class="form-control shadow-none mb-3" id="input2"
+                        placeholder="សូមសាកល្បងវាយអក្សរ..." onkeyup="handleCount2()" onfocus="handleStyle3()">
+                    <div class="display-counter text-success" id="display2" style="background: #e8f5e9;">ចំនួនចុច: 0
+                    </div>
+                    <p class="small text-success mt-3">ចំណាំ: ទាល់តែលែងដៃ ទើបវា count បន្ថែម</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let input1 = document.getElementById('input1');
+        let input2 = document.getElementById('input2');
+
+        let display1 = document.getElementById('display1');
+        let display2 = document.getElementById('display2');
+        let total = 0;
+        var kkk = 1;
+        var kkk = 333;
+
+        function handleCount1() {
+            total = total + 1;
+            // total += 1;
+            // total++;
+            display1.textContent = total;
+
+        }
+
+        function handleStyle() {
+            input1.classList.add('display-counter');
+        }
+
+        function handleStyle2() {
+            input1.classList.remove('display-counter');
+        }
+
+        function handleCount2() {
+            total += 1;
+            display2.innerText = total;
+        }
+
+        function handleStyle3() {
+            input2.classList.add('display-counter');
+        }
+    </script>
+
+
+
+
+
+
+    <!-- <script>
+        let count1 = 0;
+        let count2 = 0;
+        let input1 = document.getElementById('input1');
+
+
+        // Function សម្រាប់ onkeydown
+        function handleCount1() {
+            count1 += 1;
+            document.getElementById("display1").textContent = "ចំនួនចុច: " + count1;
+        }
+
+        // Function សម្រាប់ onkeyup
+        function handleCount2() {
+            count2 += 1;
+            document.getElementById("display2").textContent = "ចំនួនចុច: " + count2;
+        }
+
+        function handleStyle() {
+            input1.classList.add('display-counter');
+        }
+
+        function handleStyle2() {
+            input1.classList.remove('display-counter');
+        }
+    </script> -->
+
+</body>
+
+</html>
+```
+
 # Practice with Event
 ## JavaScript
 ```javascript
@@ -147,9 +289,120 @@
 ```
 
 # Lesson "Event" with Example
+
+## "onchange"
 ```html
-# I will update later
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="col-md-4 m-3">
+        <select class="form-select" onchange="valueSelect()" id="formSelect"
+            aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <p id="showResult"></p>
+    </div>
+    <script>
+        let show = document.getElementById('showResult');
+        function valueSelect() {
+            show.innerHTML = frmSelect.value;
+        }
+    </script>
+</body>
+
+</html>
 ```
+
+## "onfocus && onblur" Use without Keyword "this", Use Id DOM
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 m-3">
+                <label for="validationCustom01" class="form-label">Name</label>
+                <input type="text" class="form-control shadow-none" id="name" onfocus="nameInput()"
+                    onblur="nameInput2()" required>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Use DOM by id
+        let nameIn = document.getElementById('name');
+    
+        function nameInput() {
+            // name.classList.add('bg-warning');
+            nameIn.style.backgroundColor = "#000000";
+        }
+        
+        function nameInput2() {
+            nameIn.style.backgroundColor = "#ffffff";
+        }
+    </script>
+</body>
+
+</html>
+```
+
+## "onfocus && onblur" Use with Keyword "this"
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 m-3">
+                <label for="validationCustom01" class="form-label">Name</label>
+                <input type="text" class="form-control shadow-none" onfocus="nameInput(this)"
+                    onblur="nameInput2(this)" required>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Use with keyword --> this <--
+        // Dont' need to dom element by id, or class 
+        function nameInput(nameIn) {
+            // nameIn.classList.add('bg-warning');
+            nameIn.style.backgroundColor = "#000000";
+        }
+        
+        function nameInput2(nameIn) {
+            nameIn.style.backgroundColor = "#ffffff";
+        }
+    </script>
+</body>
+
+</html>
+```
+# End of Lesson "Event"
 
 # Practice
 ```html
