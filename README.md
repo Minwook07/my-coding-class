@@ -102,39 +102,6 @@
             input2.classList.add('display-counter');
         }
     </script>
-
-
-
-
-
-
-    <!-- <script>
-        let count1 = 0;
-        let count2 = 0;
-        let input1 = document.getElementById('input1');
-
-
-        // Function សម្រាប់ onkeydown
-        function handleCount1() {
-            count1 += 1;
-            document.getElementById("display1").textContent = "ចំនួនចុច: " + count1;
-        }
-
-        // Function សម្រាប់ onkeyup
-        function handleCount2() {
-            count2 += 1;
-            document.getElementById("display2").textContent = "ចំនួនចុច: " + count2;
-        }
-
-        function handleStyle() {
-            input1.classList.add('display-counter');
-        }
-
-        function handleStyle2() {
-            input1.classList.remove('display-counter');
-        }
-    </script> -->
-
 </body>
 
 </html>
