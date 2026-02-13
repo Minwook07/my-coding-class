@@ -1,3 +1,213 @@
+# Exercise 4 (13-Feb-2026)
+## JavaScript Exercise 4
+```javascript
+let myForm = document.getElementById("my-form");
+let tableBody = document.getElementById("tableBody");
+let title = document.getElementById("title");
+let desc = document.getElementById("description");
+let published = document.getElementById("published");
+let titleForm = document.querySelector(".title-form");
+let btnSave = document.querySelector(".btn");
+let isEdit = null;
+
+// 1. Function សម្រាប់ទាញទិន្នន័យពី Server មកបង្ហាញក្នុង Table
+function displayBook() {
+    let published = document.getElementById("publishedCheck");
+    let indexBook = "https://api-crud-yrvv.onrender.com/api/tutorials";
+    let publishedBook = "https://api-crud-yrvv.onrender.com/api/tutorials/published";
+
+    let endpoint = published.checked ? publishedBook : indexBook;
+
+    fetch(endpoint)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            tableBody.innerHTML = "";
+            data.forEach(item => {
+                tableBody.innerHTML +=
+                    `
+                <tr>
+                    <td>${item.id}</td>
+                    <td>${item.title}</td>
+                    <td>${item.description}</td>
+                    <td class="${item.published ? "text-success" : "text-danger"}">
+                        ${item.published ? "Published" : "Draft"}
+                    </td>
+                    <td>
+                        <span>
+                            <i class="bi bi-pencil-square text-primary mx-1 fs-5 cursor-pointer" onclick="editBook(${item.id})"></i>
+                        </span>
+                        <span>
+                            <i class="bi bi-trash3 text-danger mx-1 fs-5 cursor-pointer"></i>
+                        </span>
+                    </td>
+                </tr>
+            `
+            })
+        })
+}
+
+// 2. Function សម្រាប់បង្កើតទិន្នន័យថ្មី (POST)
+function addBook() {
+    fetch("https://api-crud-yrvv.onrender.com/api/tutorials", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: title.value,
+            description: desc.value,
+            published: published.checked ? 1 : 0
+        })
+    })
+        .then(res => res.json())
+        .then(data => {
+            myForm.reset();
+            displayBook();
+            console.log(data);
+        })
+}
+
+// 3. Function ពេលចុចប៊ូតុង Edit: ទាញទិន្នន័យចាស់មកដាក់ក្នុង Form
+function editBook(id) {
+    isEdit = id;
+    titleForm.innerHTML = "Update Item";
+    btnSave.innerHTML = "Save Change";
+
+    fetch(`https://api-crud-yrvv.onrender.com/api/tutorials/${id}`, {
+        method: "GET"
+    })
+        .then(res => res.json())
+        .then(data => {
+            title.value = data.title;
+            desc.value = data.description;
+            published.checked = data.published;
+        })
+}
+
+// 4. Function សម្រាប់រក្សាទុកការកែប្រែ (PUT)
+function saveEdit(id) {
+    fetch(`https://api-crud-yrvv.onrender.com/api/tutorials/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: title.value,
+            description: desc.value,
+            published: published.checked ? 1 : 0
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        isEdit = null; // ដាក់ isEdit null ឱ្យវាបង្កើតថ្មី បើមិនដូច្នេះទេ ពេលយើងចង់ Add ថ្មី កម្មវិធីនឹងច្រឡំថាទៅ Edit របស់ចាស់ដដែល
+        titleForm.innerHTML = "Create New Item";
+        btnSave.innerHTML = "Submit";
+        myForm.reset();
+        displayBook();
+        console.log(data);
+    })
+}
+
+// 5. ចាប់ព្រឹត្តិការណ៍ពេល User ចុច Submit Form
+myForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if(isEdit) {
+        saveEdit(isEdit);
+    }
+    else {
+        addBook();
+    }
+})
+
+// Function ពេលចុចបង្ហាញតែ published book
+function doCheck() {
+    displayBook();
+}
+
+displayBook();
+```
+
+## HTML Exercise 4
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Form with Table Below</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="title-form">Create New Item</h2>
+
+        <!-- Form -->
+        <form id="my-form">
+            <!-- Title -->
+            <div class="mb-3">
+                <label for="title" class="form-label fw-bold">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter title">
+                <span id="error-title" class="text-danger"></span>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label for="description" class="form-label fw-bold">Description</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Enter description"></textarea>
+                <span id="error-description" class="text-danger"></span>
+
+            </div>
+
+            <!-- Published -->
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="published">
+                <label class="form-check-label" for="published">Published</label>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <h3 class="text-center mb-4">Tutorial List</h3>
+
+        <!-- Checkbox -->
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="publishedCheck" onclick="doCheck()">
+            <label class="form-check-label" for="publishedCheck">
+                Show Only Published
+            </label>
+        </div>
+
+        <!-- Table -->
+        <table class="table table-bordered table-hover text-center align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+```
+
 # Practice with Event "onkeydown && onkeyup"
 ```html
 <!DOCTYPE html>
